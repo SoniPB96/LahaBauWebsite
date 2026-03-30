@@ -1,21 +1,9 @@
-# Laha Bau Website v2
+# Laha Bau Website – V1 Final
 
-## Fertig
-- Variante-B-Header
+Basis ist die ursprüngliche V1-Optik.
+Geändert wurden nur:
+- Header in Variante B
 - echte Kontaktdaten
-- klickbare Buttons für Telefon, E-Mail und WhatsApp
-- Kontaktformular
-- Kostenschätzer
-- Vercel API Route `/api/contact`
-- Demo-Modus ohne API-Key
-- echter E-Mail-Versand optional über Resend + Vercel Environment Variables
+- Einsatzgebiet: Paderborn und Umland
 
-## Lokal
-npm install
-npm run dev
-
-## Für echten E-Mail-Versand in Vercel
-Environment Variables:
-- RESEND_API_KEY
-- TO_EMAIL=kontakt@laha-bau.de
-- FROM_EMAIL=onboarding@resend.dev oder später eigene Domain-Mail
+Frontend-only Version, ohne zusätzliche Formular-Logik.
