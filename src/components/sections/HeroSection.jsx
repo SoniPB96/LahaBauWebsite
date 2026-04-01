@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 import EstimatorCard from '../calculator/EstimatorCard';
+import CalculatorPanel from '../calculator/CalculatorPanel';
 
 function HeroSection({ scrollToSection }) {
+  const [showCalculator, setShowCalculator] = useState(false);
+
   return (
     <section id="start" className="hero">
-      <div className="hero-container">
-        <div className="hero-content">
+      <div className={`hero-container ${showCalculator ? 'calculator-open' : ''}`}>
+        <div className={`hero-content ${showCalculator ? 'hidden' : ''}`}>
           <div className="hero-badge">
             {siteConfig.hero.badge}
           </div>
@@ -33,24 +36,38 @@ function HeroSection({ scrollToSection }) {
             </button>
             <button 
               className="cta-secondary"
-              onClick={() => scrollToSection('rechner')}
+              onClick={() => setShowCalculator(true)}
             >
               Kostenrechner öffnen
             </button>
           </div>
         </div>
 
-        <div className="hero-estimator" id="rechner">
-          <EstimatorCard scrollToSection={scrollToSection} />
+        <div className={`hero-estimator ${showCalculator ? 'hidden' : ''}`} id="rechner">
+          <EstimatorCard onOpenCalculator={() => setShowCalculator(true)} />
         </div>
+
+        {showCalculator && (
+          <div className="calculator-full">
+            <CalculatorPanel 
+              onOpenRequestPage={() => {
+                setShowCalculator(false);
+                scrollToSection('anfrage');
+              }}
+              onClose={() => setShowCalculator(false)}
+            />
+          </div>
+        )}
       </div>
 
-      <button 
-        className="scroll-indicator"
-        onClick={() => scrollToSection('leistungen')}
-      >
-        <ChevronDown size={24} />
-      </button>
+      {!showCalculator && (
+        <button 
+          className="scroll-indicator"
+          onClick={() => scrollToSection('leistungen')}
+        >
+          <ChevronDown size={24} />
+        </button>
+      )}
     </section>
   );
 }

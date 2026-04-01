@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import CalculatorPanel from './CalculatorPanel';
 
-function EstimatorCard({ scrollToSection }) {
+function EstimatorCard({ onOpenCalculator }) {
   const [mode, setMode] = useState('multi');
-  const [showCalculator, setShowCalculator] = useState(false);
-
-  if (showCalculator) {
-    return <CalculatorPanel onOpenRequestPage={() => scrollToSection('anfrage')} />;
-  }
 
   return (
     <div className="estimator-card">
@@ -42,7 +36,7 @@ function EstimatorCard({ scrollToSection }) {
 
       <button 
         className="estimator-open"
-        onClick={() => setShowCalculator(true)}
+        onClick={onOpenCalculator}
       >
         Rechner öffnen
       </button>

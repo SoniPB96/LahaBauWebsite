@@ -27,7 +27,7 @@ function SummaryLabel({ value, choices }) {
   return found?.label || value || "—";
 }
 
-export default function CalculatorPanel({ onOpenRequestPage }) {
+export default function CalculatorPanel({ onOpenRequestPage, onClose }) {
   const [step, setStep] = React.useState(1);
   const [form, setForm] = React.useState(calculatorConfig.defaults);
   const [stepError, setStepError] = React.useState("");
@@ -79,6 +79,26 @@ export default function CalculatorPanel({ onOpenRequestPage }) {
 
   return (
     <div className="estimator-layout">
+      {onClose && step === 1 && (
+        <button 
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            background: 'var(--bg-tertiary)',
+            border: '1px solid var(--border-primary)',
+            borderRadius: '8px',
+            padding: '0.5rem 1rem',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            fontSize: '0.875rem',
+            fontWeight: '500',
+          }}
+        >
+          ← Zurück
+        </button>
+      )}
       <div className="card estimator-card liquid-card glow">
         <div className="card-pad">
           <div className="wizard-top">
