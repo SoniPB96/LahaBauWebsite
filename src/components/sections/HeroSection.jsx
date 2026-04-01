@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 import EstimatorCard from '../calculator/EstimatorCard';
-import CalculatorPanel from '../calculator/CalculatorPanel';
+import ModernCalculatorPanel from '../calculator/ModernCalculatorPanel';
+import '../calculator/modern-calculator.css';
 
 function HeroSection({ scrollToSection }) {
   const [showCalculator, setShowCalculator] = useState(false);
@@ -49,7 +50,7 @@ function HeroSection({ scrollToSection }) {
 
         {showCalculator && (
           <div className="calculator-full">
-            <CalculatorPanel 
+            <ModernCalculatorPanel 
               onOpenRequestPage={() => {
                 setShowCalculator(false);
                 scrollToSection('anfrage');
