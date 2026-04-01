@@ -191,6 +191,10 @@ body {
   display: none;
 }
 
+.hero-estimator.hidden {
+  display: none;
+}
+
 /* Calculator Full View */
 .calculator-full {
   width: 100%;
